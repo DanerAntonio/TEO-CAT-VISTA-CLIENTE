@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Todos los Productos - Teo/Cat</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        .submenu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+        }
+        .menu-item:hover > .submenu {
+            display: block;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .close:hover {
+            color: #000;
+        }
+        .swiper-container {
+            width: 100%;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-wrapper" id="main-wrapper">
+        <header class="bg-white shadow-sm">
+            <nav class="container mx-auto px-4 py-4">
+                <div class="flex items-center justify-between">
+                    <a href="./index.html" class="flex items-center space-x-3">
+                        <img src="../assets/images/logos/dark-logo.svg" alt="Teo/Cat Logo" class="h-8 w-auto">
+                        <span class="text-xl font-bold text-gray-900">Teo/Cat</span>
+                    </a>
+                    
+                    <div class="hidden md:flex items-center justify-center flex-grow">
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 mx-4"><i class="fas fa-home mr-2"></i>Inicio</a>
+                        <a href="TodosLosProductos.html" class="text-blue-600 font-semibold mx-4"><i class="fas fa-box-open mr-2"></i>Todos Los Productos</a>
+                        
+                        <div class="relative group mx-4">
+                            <button class="text-gray-700 hover:text-blue-600 flex items-center" id="categoryButton">
+                                <i class="fas fa-list mr-2"></i>Categoría
+                                <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50" id="categoryMenu">
+                                <div class="py-1">
+                                    <div class="menu-item relative px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        Perros
+                                        <div class="submenu w-48 bg-white rounded-md shadow-lg">
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Comida</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Juguetes</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Accesorios</a>
+                                        </div>
+                                    </div>
+                                    <div class="menu-item relative px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        Gatos
+                                        <div class="submenu w-48 bg-white rounded-md shadow-lg">
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Comida</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Juguetes</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Accesorios</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="SobreNosotros.html" class="text-gray-700 hover:text-blue-600 mx-4"><i class="fas fa-info-circle mr-2"></i>Sobre Nosotros</a>
+                        <a href="Contacto.html" class="text-gray-700 hover:text-blue-600 mx-4"><i class="fas fa-envelope mr-2"></i>Contacto</a>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <a href="Carrito.html" class="text-gray-700 hover:text-blue-600 relative" aria-label="Carrito de compras">
+                            <i class="fas fa-shopping-cart text-2xl"></i>
+                            <span id="cartCount" class="absolute -top-2 -right-2 bg-blue-600 text-white rounded-full h-5 w-5 flex items-center justify-center text-xs">0</span>
+                        </a>
+                        
+                        <div class="relative group">
+                            <button class="flex items-center focus:outline-none" aria-label="Menú de usuario" id="profileButton">
+                                <img src="../assets/images/profile/user-1.jpg" alt="" class="h-8 w-8 rounded-full object-cover">
+                            </button>
+                            <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50" id="profileMenu">
+                                <div class="py-1">
+                                    <a href="MiPerfil.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mi Perfil</a>
+                                    <a href="Login.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar Sesión</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menú móvil -->
+                <div class="md:hidden mt-4">
+                    <div class="flex flex-col space-y-2">
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600"><i class="fas fa-home mr-2"></i>Inicio</a>
+                        <a href="TodosLosProductos.html" class="text-blue-600 font-semibold"><i class="fas fa-box-open mr-2"></i>Todos Los Productos</a>
+                        <button class="text-gray-700 hover:text-blue-600 flex items-center justify-between w-full" onclick="toggleMobileSubmenu('mobileCategoryMenu')">
+                            <span><i class="fas fa-list mr-2"></i>Categoría</span>
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="mobileCategoryMenu" class="hidden pl-4">
+                            <button class="text-gray-700 hover:text-blue-600 flex items-center justify-between w-full py-2" onclick="toggleMobileSubmenu('mobileDogsMenu')">
+                                <span>Perros</span>
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div id="mobileDogsMenu" class="hidden pl-4">
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Comida</a>
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Juguetes</a>
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Accesorios</a>
+                            </div>
+                            <button class="text-gray-700 hover:text-blue-600 flex items-center justify-between w-full py-2" onclick="toggleMobileSubmenu('mobileCatsMenu')">
+                                <span>Gatos</span>
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div id="mobileCatsMenu" class="hidden pl-4">
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Comida</a>
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Juguetes</a>
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Accesorios</a>
+                            </div>
+                        </div>
+                        <a href="SobreNosotros.html" class="text-gray-700 hover:text-blue-600"><i class="fas fa-info-circle mr-2"></i>Sobre Nosotros</a>
+                        <a href="Contacto.html" class="text-gray-700 hover:text-blue-600"><i class="fas fa-envelope mr-2"></i>Contacto</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="py-8">
+            <div class="container mx-auto px-4">
+                <h1 class="text-3xl font-bold mb-8">Todos los Productos</h1>
+                
+                <div class="flex flex-col md:flex-row gap-8">
+                    <!-- Filtros -->
+                    <div class="w-full md:w-1/4">
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h2 class="text-xl font-semibold mb-4">Filtros</h2>
+                            <div class="mb-4">
+                                <h3 class="font-semibold mb-2">Categoría</h3>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="form-checkbox" value="perros">
+                                        <span class="ml-2">Perros</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="form-checkbox" value="gatos">
+                                        <span class="ml-2">Gatos</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <h3 class="font-semibold mb-2">Tipo de Producto</h3>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="form-checkbox" value="comida">
+                                        <span class="ml-2">Comida</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="form-checkbox" value="juguetes">
+                                        <span class="ml-2">Juguetes</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="form-checkbox" value="accesorios">
+                                        <span class="ml-2">Accesorios</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-2">Rango de Precio</h3>
+                                <div class="flex items-center">
+                                    <input type="number" id="minPrice" placeholder="Min" class="w-1/2 px-2 py-1 border rounded-l">
+                                    <input type="number" id="maxPrice" placeholder="Max" class="w-1/2 px-2 py-1 border rounded-r">
+                                </div>
+                            </div>
+                            <button id="applyFilters" class="mt-4 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300 w-full">
+                                Aplicar Filtros
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Lista de Productos -->
+                    <div class="w-full md:w-3/4">
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <div class="flex justify-between items-center mb-6">
+                                <div class="flex items-center">
+                                    <span class="mr-2">Ordenar por:</span>
+                                    <select id="sortOrder" class="border rounded px-2 py-1">
+                                        <option value="relevance">Relevancia</option>
+                                        <option value="priceLowToHigh">Precio: Menor a Mayor</option>
+                                        <option value="priceHighToLow">Precio: Mayor a Menor</option>
+                                        <option value="bestSellers">Más Vendidos</option>
+                                    </select>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="mr-2">Mostrar:</span>
+                                    <select id="itemsPerPage" class="border rounded px-2 py-1">
+                                        <option value="12">12</option>
+                                        <option value="24">24</option>
+                                        <option value="36">36</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div id="productList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <!-- Los productos se cargarán aquí dinámicamente -->
+                            </div>
+                            
+                            <!-- Paginación -->
+                            <div class="mt-8 flex justify-center">
+                                <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                                    <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                        <span class="sr-only">Anterior</span>
+                                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                        </svg>
+                                    </a>
+                                    <a href="#" aria-current="page" class="z-10 bg-blue-50 border-blue-500 text-blue-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        1
+                                    </a>
+                                    <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        2
+                                    </a>
+                                    <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium">
+                                        3
+                                    </a>
+                                    <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
+                                        ...
+                                    </span>
+                                    <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium">
+                                        8
+                                    </a>
+                                    <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        9
+                                    </a>
+                                    <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        10
+                                    </a>
+                                    <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                        <span class="sr-only">Siguiente</span>
+                                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                        </svg>
+                                    </a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="bg-gray-800 text-white py-8">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-wrap justify-between">
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <h3 class="text-xl font-semibold mb-4">Teo/Cat</h3>
+                        <p>Tu tienda de confianza para productos de mascotas de alta calidad.</p>
+                    </div>
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <h3 class="text-xl font-semibold mb-4">Enlaces Rápidos</h3>
+                        <ul>
+                            <li><a href="./index.html" class="hover:text-blue-400">Inicio</a></li>
+                            <li><a href="./todos-los-productos.html" class="hover:text-blue-400">Productos</a></li>
+                            <li><a href="./sobre-nosotros.html" class="hover:text-blue-400">Sobre Nosotros</a></li>
+                            <li><a href="./contacto.html" class="hover:text-blue-400">Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <h3 class="text-xl font-semibold mb-4">Contacto</h3>
+                        <p>Email: info@teocat.com</p>
+                        <p>Teléfono: (123) 456-7890</p>
+                    </div>
+                    <div class="w-full md:w-1/4">
+                        <h3 class="text-xl font-semibold mb-4">Síguenos</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                    <p>&copy; 2023 Teo/Cat. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal para detalles del producto -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // Funciones de navegación
+        function toggleMobileSubmenu(id) {
+            const submenu = document.getElementById(id);
+            submenu.classList.toggle('hidden');
+        }
+
+        function toggleMenu(id) {
+            const menu = document.getElementById(id);
+            menu.classList.toggle('invisible');
+            menu.classList.toggle('opacity-0');
+        }
+
+        document.getElementById('categoryButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleMenu('categoryMenu');
+        });
+
+        document.getElementById('profileButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleMenu('profileMenu');
+        });
+
+        document.addEventListener('click', function(e) {
+            const categoryButton = document.getElementById('categoryButton');
+            const categoryMenu = document.getElementById('categoryMenu');
+            const profileButton = document.getElementById('profileButton');
+            const profileMenu = document.getElementById('profileMenu');
+
+            if (!categoryButton.contains(e.target) && !categoryMenu.contains(e.target)) {
+                categoryMenu.classList.add('invisible', 'opacity-0');
+            }
+
+            if (!profileButton.contains(e.target) && !profileMenu.contains(e.target)) {
+                profileMenu.classList.add('invisible', 'opacity-0');
+            }
+        });
+
+        // Datos de productos
+        const products = [
+            {
+                id: 1,
+                name: "Taste Of The Wild Aves Asadas",
+                description: "Contiene una óptima mezcla de proteínas provenientes de aves de corral que son altamente digestibles.",
+                price: 29.99,
+                image: "/placeholder.svg?height=200&width=300",
+                category: "perros",
+                type: "comida",
+                bestSeller: true
+            },
+            {
+                id: 2,
+                name: "PETLIBRO-Juguete Interactivo Para Gatos",
+                description: "Mantén a tu gato entretenido por horas con un juguete automático con luces LED",
+                price: 14.99,
+                image: "/placeholder.svg?height=200&width=300",
+                category: "gatos",
+                type: "juguetes",
+                bestSeller: false
+            },
+            {
+                id: 3,
+                name: "DAGANXI Collar Táctico Para Perro",
+                description: "Collar ajustable de nailon para perro con mango de control y hebilla de metal pesado para perros medianos y grandes",
+                price: 9.99,
+                image: "/placeholder.svg?height=200&width=300",
+                category: "perros",
+                type: "accesorios",
+                bestSeller: true
+            },
+            {
+                id: 4,
+                name: "Prime Cat Litter",
+                description: "Arena sanitaria para gatos, ayuda al control de olores y fácil de limpiar",
+                price: 19.99,
+                image: "/placeholder.svg?height=200&width=300",
+                category: "gatos",
+                type: "accesorios",
+                bestSeller: false
+            },
+            {
+                id: 5,
+                name: "Cama Ortopédica Para Perros",
+                description: "Cama grande para perros, totalmente impermeable, con funda extraíble",
+                price: 49.99,
+                image: "/placeholder.svg?height=200&width=300",
+                category: "perros",
+                type: "accesorios",
+                bestSeller: true
+            },
+            {
+                id: 6,
+                name: "Catit Rascador",
+                description: "Los rascadores son la manera ideal para que tu gato mantenga sus uñas sanas y fuertes y de paso evitar que arañe otros objetos de tu hogar",
+                price: 34.99,
+                image: "/placeholder.svg?height=200&width=300",
+                category: "gatos",
+                type: "accesorios",
+                bestSeller: false
+            }
+        ];
+
+        // Funciones del catálogo
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const productList = document.getElementById('productList');
+        const cartCountElement = document.getElementById('cartCount');
+
+        function renderProducts(productsToRender) {
+            productList.innerHTML = '';
+            productsToRender.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.className = 'bg-white rounded-lg shadow-md overflow-hidden cursor-pointer';
+                productElement.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">${product.name}</h3>
+                        <p class="text-gray-600 mb-2">${product.description}</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">$${product.price.toFixed(2)}</span>
+                            <button onclick="addToCart(${product.id})" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                `;
+                productElement.addEventListener('click', (e) => {
+                    if (!e.target.closest('button')) {
+                        showProductDetails(product);
+                    }
+                });
+                productList.appendChild(productElement);
+            });
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                const existingItem = cart.find(item => item.id === productId);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ ...product, quantity: 1 });
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+            }
+        }
+
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCountElement.textContent = totalItems;
+        }
+
+        function applyFilters() {
+            const categoryFilters = Array.from(document.querySelectorAll('input[type="checkbox"][value="perros"], input[type="checkbox"][value="gatos"]'))
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+
+            const typeFilters = Array.from(document.querySelectorAll('input[type="checkbox"][value="comida"], input[type="checkbox"][value="juguetes"], input[type="checkbox"][value="accesorios"]'))
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+
+            const minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
+            const maxPrice = parseFloat(document.getElementById('maxPrice').value) || Infinity;
+
+            const sortOrder = document.getElementById('sortOrder').value;
+
+            let filteredProducts = products.filter(product => 
+                (categoryFilters.length === 0 || categoryFilters.includes(product.category)) &&
+                (typeFilters.length === 0 || typeFilters.includes(product.type)) &&
+                product.price >= minPrice && product.price <= maxPrice
+            );
+
+            switch (sortOrder) {
+                case 'priceLowToHigh':
+                    filteredProducts.sort((a, b) => a.price - b.price);
+                    break;
+                case 'priceHighToLow':
+                    filteredProducts.sort((a, b) => b.price - a.price);
+                    break;
+                case 'bestSellers':
+                    filteredProducts.sort((a, b) => b.bestSeller - a.bestSeller);
+                    break;
+                default:
+                    // 'relevance' - no sorting needed
+                    break;
+            }
+
+            renderProducts(filteredProducts);
+        }
+
+        document.getElementById('applyFilters').addEventListener('click', applyFilters);
+        document.getElementById('sortOrder').addEventListener('change', applyFilters);
+
+        // Modal de detalles del producto
+        const modal = document.getElementById('productModal');
+        const modalContent = document.getElementById('modalContent');
+        const closeBtn = document.getElementsByClassName('close')[0];
+
+        function showProductDetails(product) {
+            modalContent.innerHTML = `
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="${product.image}" alt="${product.name}"></div>
+                        <div class="swiper-slide"><img src="${product.image}" alt="${product.name}"></div>
+                        <div class="swiper-slide"><img src="${product.image}" alt="${product.name}"></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                <h2 class="text-2xl font-bold mb-4">${product.name}</h2>
+                <p class="text-gray-600 mb-4">${product.description}</p>
+                <p class="text-blue-600 font-bold text-xl mb-4">$${product.price.toFixed(2)}</p>
+                <button onclick="addToCart(${product.id})" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300 w-full">Añadir al Carrito</button>
+            `;
+            modal.style.display = 'flex';
+
+            new Swiper('.swiper-container', {
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        }
+
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts(products);
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>

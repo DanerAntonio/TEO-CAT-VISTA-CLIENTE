@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mi Perfil - Teo/Cat</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .submenu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+        }
+        .menu-item:hover > .submenu {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-wrapper" id="main-wrapper">
+        <header class="bg-white shadow-sm">
+            <nav class="container mx-auto px-4 py-4">
+                <div class="flex items-center justify-between">
+                    <a href="./index.html" class="flex items-center space-x-3">
+                        <img src="../assets/images/logos/dark-logo.svg" alt="Teo/Cat Logo" class="h-8 w-auto">
+                        <span class="text-xl font-bold text-gray-900">Teo/Cat</span>
+                    </a>
+                    
+                    <div class="hidden md:flex items-center justify-center flex-grow">
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 mx-4"><i class="fas fa-home mr-2"></i>Inicio</a>
+                        <a href="TodosLosProductos.html" class="text-gray-700 hover:text-blue-600 mx-4"><i class="fas fa-box-open mr-2"></i>Todos Los Productos</a>
+                        
+                        <div class="relative group mx-4">
+                            <button class="text-gray-700 hover:text-blue-600 flex items-center" id="categoryButton">
+                                <i class="fas fa-list mr-2"></i>Categoría
+                                <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50" id="categoryMenu">
+                                <div class="py-1">
+                                    <div class="menu-item relative px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        Perros
+                                        <div class="submenu w-48 bg-white rounded-md shadow-lg">
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Comida</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Juguetes</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Accesorios</a>
+                                        </div>
+                                    </div>
+                                    <div class="menu-item relative px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        Gatos
+                                        <div class="submenu w-48 bg-white rounded-md shadow-lg">
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Comida</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Juguetes</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Accesorios</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="SobreNosotros.html" class="text-gray-700 hover:text-blue-600 mx-4"><i class="fas fa-info-circle mr-2"></i>Sobre Nosotros</a>
+                        <a href="Contacto.html" class="text-gray-700 hover:text-blue-600 mx-4"><i class="fas fa-envelope mr-2"></i>Contacto</a>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <a href="Carrito.html" class="text-gray-700 hover:text-blue-600 relative" aria-label="Carrito de compras">
+                            <i class="fas fa-shopping-cart text-2xl"></i>
+                            <span id="cartCount" class="absolute -top-2 -right-2 bg-blue-600 text-white rounded-full h-5 w-5 flex items-center justify-center text-xs">0</span>
+                        </a>
+                        
+                        <div class="relative group">
+                            <button class="flex items-center focus:outline-none" aria-label="Menú de usuario" id="profileButton">
+                                <img src="../assets/images/profile/user-1.jpg" alt="" class="h-8 w-8 rounded-full object-cover" id="profileImage">
+                            </button>
+                            <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50" id="profileMenu">
+                                <div class="py-1">
+                                    <a href="MiPerfil.html" class="block px-4 py-2 text-sm text-blue-600 font-semibold bg-gray-100">Mi Perfil</a>
+                                    <a href="Login.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar Sesión</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menú móvil -->
+                <div class="md:hidden mt-4">
+                    <div class="flex flex-col space-y-2">
+                        <a href="./index.html" class="text-gray-700 hover:text-blue-600"><i class="fas fa-home mr-2"></i>Inicio</a>
+                        <a href="./todos-los-productos.html" class="text-gray-700 hover:text-blue-600"><i class="fas fa-box-open mr-2"></i>Todos Los Productos</a>
+                        <button class="text-gray-700 hover:text-blue-600 flex items-center justify-between w-full" onclick="toggleMobileSubmenu('mobileCategoryMenu')">
+                            <span><i class="fas fa-list mr-2"></i>Categoría</span>
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="mobileCategoryMenu" class="hidden pl-4">
+                            <button class="text-gray-700 hover:text-blue-600 flex items-center justify-between w-full py-2" onclick="toggleMobileSubmenu('mobileDogsMenu')">
+                                <span>Perros</span>
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div id="mobileDogsMenu" class="hidden pl-4">
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Comida</a>
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Juguetes</a>
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Accesorios</a>
+                            </div>
+                            <button class="text-gray-700 hover:text-blue-600 flex items-center justify-between w-full py-2" onclick="toggleMobileSubmenu('mobileCatsMenu')">
+                                <span>Gatos</span>
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div id="mobileCatsMenu" class="hidden pl-4">
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Comida</a>
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Juguetes</a>
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Accesorios</a>
+                            </div>
+                        </div>
+                        <a href="SobreNosotros.html" class="text-gray-700 hover:text-blue-600"><i class="fas fa-info-circle mr-2"></i>Sobre Nosotros</a>
+                        <a href="Contacto.html" class="text-gray-700 hover:text-blue-600"><i class="fas fa-envelope mr-2"></i>Contacto</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="py-8">
+            <div class="container mx-auto px-4">
+                <h1 class="text-3xl font-bold mb-8">Mi Perfil</h1>
+                
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <!-- Menú lateral -->
+                    <div class="lg:w-1/4">
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <div class="flex items-center mb-6">
+                                <img src="../assets/images/profile/user-1.jpg" alt="Foto de perfil" class="w-16 h-16 rounded-full object-cover mr-4" id="profileImageLarge">
+                                <div>
+                                    <h2 class="text-xl font-semibold" id="userName">Juan Pérez</h2>
+                                    <p class="text-gray-600">Cliente desde 2022</p>
+                                    <button id="changeProfileImageBtn" class="mt-2 text-blue-600 hover:underline">Cambiar imagen</button>
+                                </div>
+                            </div>
+                            <nav>
+                                <ul class="space-y-2">
+                                    <li>
+                                        <a href="#informacion-personal" class="block py-2 px-4 rounded-lg bg-blue-100 text-blue-600 font-semibold">
+                                            <i class="fas fa-user mr-2"></i> Información Personal
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#historial-pedidos" class="block py-2 px-4 rounded-lg hover:bg-gray-100">
+                                            <i class="fas fa-shopping-bag mr-2"></i> Historial de Pedidos
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#direcciones" class="block py-2 px-4 rounded-lg hover:bg-gray-100">
+                                            <i class="fas fa-map-marker-alt mr-2"></i> Direcciones
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#preferencias" class="block py-2 px-4 rounded-lg hover:bg-gray-100">
+                                            <i class="fas fa-cog mr-2"></i> Preferencias
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    
+                    <!-- Contenido principal -->
+                    <div class="lg:w-3/4">
+                        <!-- Información Personal -->
+                        <section id="informacion-personal" class="bg-white rounded-lg shadow-md p-6 mb-8">
+                            <h2 class="text-2xl font-semibold mb-4">Información Personal</h2>
+                            <form id="personalInfoForm">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                                        <input type="text" id="nombre" name="nombre" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div>
+                                        <label for="apellido" class="block text-sm font-medium text-gray-700 mb-1">Apellido</label>
+                                        <input type="text" id="apellido" name="apellido" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                        <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div>
+                                        <label for="telefono" class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+                                        <input type="tel" id="telefono" name="telefono" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                </div>
+                                <div class="mt-6">
+                                    <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">
+                                        Guardar Cambios
+                                    </button>
+                                </div>
+                            </form>
+                        </section>
+                        
+                        <!-- Historial de Pedidos -->
+                        <section id="historial-pedidos" class="bg-white rounded-lg shadow-md p-6 mb-8">
+                            <h2 class="text-2xl font-semibold mb-4">Historial de Pedidos</h2>
+                            <div class="overflow-x-auto">
+                                <table class="w-full">
+                                    <thead>
+                                        <tr class="bg-gray-100">
+                                            <th class="px-4 py-2 text-left">ID Pedido</th>
+                                            <th class="px-4 py-2 text-left">Cliente</th>
+                                            <th class="px-4 py-2 text-left">Cantidad</th>
+                                            <th class="px-4 py-2 text-left">Monto Total</th>
+                                            <th class="px-4 py-2 text-left">Fecha Del Pedido</th>
+                                            <th class="px-4 py-2 text-left">Estado</th>
+                                            <th class="px-4 py-2 text-left">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="orderHistory">
+                                        <!-- Order history will be populated here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                        
+                        <!-- Direcciones -->
+                        <section id="direcciones" class="bg-white rounded-lg shadow-md p-6 mb-8">
+                            <h2 class="text-2xl font-semibold mb-4">Mis Direcciones</h2>
+                            <div id="addressList" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Addresses will be populated here -->
+                            </div>
+                            <button id="addAddressBtn" class="mt-6 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">
+                                Añadir Nueva Dirección
+                            </button>
+                        </section>
+                        
+                        <!-- Preferencias -->
+                        <section id="preferencias" class="bg-white rounded-lg shadow-md p-6">
+                            <h2 class="text-2xl font-semibold mb-4">Preferencias</h2>
+                            <form id="preferencesForm">
+                                <div class="mb-4">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="emailNotifications" name="emailNotifications" class="form-checkbox h-5 w-5 text-blue-600">
+                                        <span class="ml-2 text-gray-700">Recibir notificaciones por email</span>
+                                    </label>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="smsNotifications" name="smsNotifications" class="form-checkbox h-5 w-5 text-blue-600">
+                                        <span class="ml-2 text-gray-700">Recibir notificaciones por SMS</span>
+                                    </label>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="newsletter" name="newsletter" class="form-checkbox h-5 w-5 text-blue-600">
+                                        <span class="ml-2 text-gray-700">Suscribirse al boletín de noticias</span>
+                                    </label>
+                                </div>
+                                <div class="mt-6">
+                                    <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">
+                                        Guardar Preferencias
+                                    </button>
+                                </div>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="bg-gray-800 text-white py-8 mt-12">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-wrap justify-between">
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <h3 class="text-xl font-semibold mb-4">Teo/Cat</h3>
+                        <p>Tu tienda de confianza para productos de mascotas de alta calidad.</p>
+                    </div>
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <h3 class="text-xl font-semibold mb-4">Enlaces Rápidos</h3>
+                        <ul>
+                            <li><a href="./index.html" class="hover:text-blue-400">Inicio</a></li>
+                            <li><a href="./todos-los-productos.html" class="hover:text-blue-400">Productos</a></li>
+                            <li><a href="./sobre-nosotros.html" class="hover:text-blue-400">Sobre Nosotros</a></li>
+                            <li><a href="./contacto.html" class="hover:text-blue-400">Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <h3 class="text-xl font-semibold mb-4">Contacto</h3>
+                        <p>Email: info@teocat.com</p>
+                        <p>Teléfono: (123) 456-7890</p>
+                    </div>
+                    <div class="w-full md:w-1/4">
+                        <h3 class="text-xl font-semibold mb-4">Síguenos</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                    <p>&copy; 2023 Teo/Cat. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Navigation functions
+        function toggleMobileSubmenu(id) {
+            const submenu = document.getElementById(id);
+            submenu.classList.toggle('hidden');
+        }
+
+        function toggleMenu(id) {
+            const menu = document.getElementById(id);
+            menu.classList.toggle('invisible');
+            menu.classList.toggle('opacity-0');
+        }
+
+        document.getElementById('categoryButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleMenu('categoryMenu');
+        });
+
+        document.getElementById('profileButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleMenu('profileMenu');
+        });
+
+        document.addEventListener('click', function(e) {
+            const categoryButton = document.getElementById('categoryButton');
+            const categoryMenu = document.getElementById('categoryMenu');
+            const profileButton = document.getElementById('profileButton');
+            const profileMenu = document.getElementById('profileMenu');
+
+            if (!categoryButton.contains(e.target) && !categoryMenu.contains(e.target)) {
+                categoryMenu.classList.add('invisible', 'opacity-0');
+            }
+
+            if (!profileButton.contains(e.target) && !profileMenu.contains(e.target)) {
+                profileMenu.classList.add('invisible', 'opacity-0');
+            }
+        });
+
+        // Load user data
+        function loadUserData() {
+            const userData = JSON.parse(localStorage.getItem('userData')) || {
+                nombre: 'Juan',
+                apellido: 'Pérez',
+                email: 'juan.perez@example.com',
+                telefono: '+34 123 456 789',
+                preferences: {
+                    emailNotifications: true,
+                    smsNotifications: false,
+                    newsletter: true
+                },
+                profileImage: '../assets/images/profile/user-1.jpg'
+            };
+
+            document.getElementById('nombre').value = userData.nombre;
+            document.getElementById('apellido').value = userData.apellido;
+            document.getElementById('email').value = userData.email;
+            document.getElementById('telefono').value = userData.telefono;
+            document.getElementById('userName').textContent = `${userData.nombre} ${userData.apellido}`;
+
+            document.getElementById('emailNotifications').checked = userData.preferences.emailNotifications;
+            document.getElementById('smsNotifications').checked = userData.preferences.smsNotifications;
+            document.getElementById('newsletter').checked = userData.preferences.newsletter;
+
+            document.getElementById('profileImage').src = userData.profileImage;
+            document.getElementById('profileImageLarge').src = userData.profileImage;
+        }
+
+        // Save user data
+        document.getElementById('personalInfoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userData = JSON.parse(localStorage.getItem('userData')) || {};
+            userData.nombre = document.getElementById('nombre').value;
+            userData.apellido = document.getElementById('apellido').value;
+            userData.email = document.getElementById('email').value;
+            userData.telefono = document.getElementById('telefono').value;
+            localStorage.setItem('userData', JSON.stringify(userData));
+            document.getElementById('userName').textContent = `${userData.nombre} ${userData.apellido}`;
+            Swal.fire('Éxito', 'Información personal actualizada', 'success');
+        });
+
+        // Save preferences
+        document.getElementById('preferencesForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userData = JSON.parse(localStorage.getItem('userData')) || {};
+            userData.preferences = {
+                emailNotifications: document.getElementById('emailNotifications').checked,
+                smsNotifications: document.getElementById('smsNotifications').checked,
+                newsletter: document.getElementById('newsletter').checked
+            };
+            localStorage.setItem('userData', JSON.stringify(userData));
+            Swal.fire('Éxito', 'Preferencias actualizadas', 'success');
+        });
+
+        // Load order history
+        function loadOrderHistory() {
+            const orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+            const orderHistoryContainer = document.getElementById('orderHistory');
+            orderHistoryContainer.innerHTML = '';
+
+            orderHistory.forEach((order, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-4 py-2">#${order.id}</td>
+                    <td class="px-4 py-2">${order.cliente}</td>
+                    <td class="px-4 py-2">${order.cantidad}</td>
+                    <td class="px-4 py-2">$${order.montoTotal.toFixed(2)}</td>
+                    <td class="px-4 py-2">${new Date(order.fechaPedido).toLocaleString()}</td>
+                    <td class="px-4 py-2"><span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-sm">${order.estado}</span></td>
+                    <td class="px-4 py-2">
+                        <button onclick="showOrderDetails(${index})" class="text-blue-600 hover:underline mr-2">Ver detalles</button>
+                        <button onclick="cancelOrder(${index})" class="text-red-600 hover:underline">Cancelar</button>
+                    </td>
+                `;
+                orderHistoryContainer.appendChild(row);
+            });
+        }
+
+        // Show order details
+        function showOrderDetails(index) {
+            const orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+            const order = orderHistory[index];
+            if (order) {
+                let itemsList = order.detalles.items.map(item => `${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}`).join('\n');
+                Swal.fire({
+                    title: `Detalles del Pedido #${order.id}`,
+                    html: `
+                        <p><strong>Cliente:</strong> ${order.cliente}</p>
+                        <p><strong>Email:</strong> ${order.detalles.email}</p>
+                        <p><strong>Dirección:</strong> ${order.detalles.direccion}</p>
+                        <p><strong>Fecha del Pedido:</strong> ${new Date(order.fechaPedido).toLocaleString()}</p>
+                        <p><strong>Estado:</strong> ${order.estado}</p>
+                        <p><strong>Cantidad de Artículos:</strong> ${order.cantidad}</p>
+                        <p><strong>Monto Total:</strong> $${order.montoTotal.toFixed(2)}</p>
+                        <h3 class="mt-4 mb-2 font-bold">Artículos:</h3>
+                        <pre class="text-left">${itemsList}</pre>
+                    `,
+                    confirmButtonText: 'Cerrar'
+                });
+            }
+        }
+
+        // Cancel order
+        function cancelOrder(index) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "No podrás revertir esta acción.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, cancelar pedido',
+                cancelButtonText: 'No, mantener pedido'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+                    if (orderHistory[index]) {
+                        orderHistory[index].estado = 'Cancelado';
+                        localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+                        loadOrderHistory();
+                        Swal.fire(
+                            'Cancelado',
+                            'El pedido ha sido cancelado.',
+                            'success'
+                        );
+                    }
+                }
+            });
+        }
+
+        // Load addresses
+        function loadAddresses() {
+            const addresses = JSON.parse(localStorage.getItem('addresses')) || [
+                { id: 1, type: 'Principal', street: 'Calle Principal 123', city: '28001 Madrid', country: 'España' },
+                { id: 2, type: 'Trabajo', street: 'Avenida Comercial 456', city: '28002 Madrid', country: 'España' }
+            ];
+            const addressList = document.getElementById('addressList');
+            addressList.innerHTML = '';
+
+            addresses.forEach(address => {
+                const addressCard = document.createElement('div');
+                addressCard.className = 'bg-gray-100 p-4 rounded-lg';
+                addressCard.innerHTML = `
+                    <h3 class="font-semibold mb-2">${address.type}</h3>
+                    <p>${address.street}</p>
+                    <p>${address.city}</p>
+                    <p>${address.country}</p>
+                    <div class="mt-4">
+                        <button onclick="editAddress(${address.id})" class="text-blue-600 hover:underline mr-2">Editar</button>
+                        <button onclick="deleteAddress(${address.id})" class="text-red-600 hover:underline">Eliminar</button>
+                    </div>
+                `;
+                addressList.appendChild(addressCard);
+            });
+        }
+
+        // Add new address
+        document.getElementById('addAddressBtn').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Añadir Nueva Dirección',
+                html: `
+                    <input id="addressType" class="swal2-input" placeholder="Tipo de dirección">
+                    <input id="street" class="swal2-input" placeholder="Calle y número">
+                    <input id="city" class="swal2-input" placeholder="Ciudad y código postal">
+                    <input id="country" class="swal2-input" placeholder="País">
+                `,
+                focusConfirm: false,
+                preConfirm: () => {
+                    return {
+                        type: document.getElementById('addressType').value,
+                        street: document.getElementById('street').value,
+                        city: document.getElementById('city').value,
+                        country: document.getElementById('country').value
+                    }
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const newAddress = result.value;
+                    let addresses = JSON.parse(localStorage.getItem('addresses')) || [];
+                    newAddress.id = Date.now();
+                    addresses.push(newAddress);
+                    localStorage.setItem('addresses', JSON.stringify(addresses));
+                    loadAddresses();
+                    Swal.fire('Éxito', 'Nueva dirección añadida', 'success');
+                }
+            });
+        });
+
+        // Edit address
+        function editAddress(id) {
+            let addresses = JSON.parse(localStorage.getItem('addresses')) || [];
+            const address = addresses.find(a => a.id === id);
+            if (address) {
+                Swal.fire({
+                    title: 'Editar Dirección',
+                    html: `
+                        <input id="addressType" class="swal2-input" placeholder="Tipo de dirección" value="${address.type}">
+                        <input id="street" class="swal2-input" placeholder="Calle y número" value="${address.street}">
+                        <input id="city" class="swal2-input" placeholder="Ciudad y código postal" value="${address.city}">
+                        <input id="country" class="swal2-input" placeholder="País" value="${address.country}">
+                    `,
+                    focusConfirm: false,
+                    preConfirm: () => {
+                        return {
+                            id: address.id,
+                            type: document.getElementById('addressType').value,
+                            street: document.getElementById('street').value,
+                            city: document.getElementById('city').value,
+                            country: document.getElementById('country').value
+                        }
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const updatedAddress = result.value;
+                        addresses = addresses.map(a => a.id === id ? updatedAddress : a);
+                        localStorage.setItem('addresses', JSON.stringify(addresses));
+                        loadAddresses();
+                        Swal.fire('Éxito', 'Dirección actualizada', 'success');
+                    }
+                });
+            }
+        }
+
+        // Delete address
+        function deleteAddress(id) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "No podrás revertir esta acción.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminar dirección',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let addresses = JSON.parse(localStorage.getItem('addresses')) || [];
+                    addresses = addresses.filter(a => a.id !== id);
+                    localStorage.setItem('addresses', JSON.stringify(addresses));
+                    loadAddresses();
+                    Swal.fire('Eliminada', 'La dirección ha sido eliminada.', 'success');
+                }
+            });
+        }
+
+        // Change profile image
+        document.getElementById('changeProfileImageBtn').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Cambiar Imagen de Perfil',
+                input: 'file',
+                inputAttributes: {
+                    'accept': 'image/*',
+                    'aria-label': 'Sube tu imagen de perfil'
+                },
+                showCancelButton: true,
+                confirmButtonText: 'Subir',
+                cancelButtonText: 'Cancelar',
+                showLoaderOnConfirm: true,
+                preConfirm: (file) => {
+                    return new Promise((resolve) => {
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.onload = (e) => {
+                                resolve(e.target.result);
+                            };
+                            reader.readAsDataURL(file);
+                        } else {
+                            resolve(null);
+                        }
+                    });
+                },
+                allowOutsideClick: () => !Swal.isLoading()
+            }).then((result) => {
+                if (result.isConfirmed && result.value) {
+                    const userData = JSON.parse(localStorage.getItem('userData')) || {};
+                    userData.profileImage = result.value;
+                    localStorage.setItem('userData', JSON.stringify(userData));
+                    document.getElementById('profileImage').src = result.value;
+                    document.getElementById('profileImageLarge').src = result.value;
+                    Swal.fire('Éxito', 'Imagen de perfil actualizada', 'success');
+                }
+            });
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadUserData();
+            loadOrderHistory();
+            loadAddresses();
+        });
+    </script>
+</body>
+</html>

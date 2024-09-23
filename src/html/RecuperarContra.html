@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recuperar Contraseña - Teo/Cat</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="page-wrapper" id="main-wrapper">
+        <header class="bg-white shadow-sm">
+            <nav class="container mx-auto px-4 py-4">
+                <div class="flex items-center justify-between">
+                    <a href="./index.html" class="flex items-center space-x-3">
+                        <img src="../assets/images/logos/dark-logo.svg" alt="Teo/Cat Logo" class="h-8 w-auto">
+                        <span class="text-xl font-bold text-gray-900">Teo/Cat</span>
+                    </a>
+                    
+                    <div class="hidden md:flex items-center space-x-4">
+                        <a href="./login.html" class="text-gray-700 hover:text-blue-600">Iniciar Sesión</a>
+                        <a href="./registro.html" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">Registrarse</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-8">
+                    <h1 class="text-3xl font-bold text-center mb-6">Recuperar Contraseña</h1>
+                    <p class="text-gray-600 text-center mb-6">Ingresa tu correo electrónico y te enviaremos instrucciones para restablecer tu contraseña.</p>
+                    <form>
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Correo electrónico</label>
+                            <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Enviar Instrucciones
+                        </button>
+                    </form>
+                    <p class="mt-6 text-center text-sm text-gray-600">
+                        ¿Recordaste tu contraseña? <a href="./login.html" class="text-blue-600 hover:underline">Volver al inicio de sesión</a>
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="bg-gray-800 text-white py-8 mt-12">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-wrap justify-between">
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <h3 class="text-xl font-semibold mb-4">Teo/Cat</h3>
+                        <p>Tu tienda de confianza para productos de mascotas de alta calidad.</p>
+                    </div>
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <h3 class="text-xl font-semibold mb-4">Enlaces Rápidos</h3>
+                        <ul>
+                            <li><a href="./index.html" class="hover:text-blue-400">Inicio</a></li>
+                            <li><a href="./todos-los-productos.html" class="hover:text-blue-400">Productos</a></li>
+                            <li><a href="./sobre-nosotros.html" class="hover:text-blue-400">Sobre Nosotros</a></li>
+                            <li><a href="./contacto.html" class="hover:text-blue-400">Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <h3 class="text-xl font-semibold mb-4">Contacto</h3>
+                        <p>Email: info@teocat.com</p>
+                        <p>Teléfono: (123) 456-7890</p>
+                    </div>
+                    <div class="w-full md:w-1/4">
+                        <h3 class="text-xl font-semibold mb-4">Síguenos</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                    <p>&copy; 2023 Teo/Cat. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

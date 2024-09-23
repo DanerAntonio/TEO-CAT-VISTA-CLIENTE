@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contacto - Teo/Cat</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .submenu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+        }
+        .menu-item:hover > .submenu {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="page-wrapper" id="main-wrapper">
+        <header class="bg-white shadow-sm">
+            <nav class="container mx-auto px-4 py-4">
+                <div class="flex items-center justify-between">
+                    <a href="./index.html" class="flex items-center space-x-3">
+                        <img src="../assets/images/logos/dark-logo.svg" alt="Teo/Cat Logo" class="h-8 w-auto">
+                        <span class="text-xl font-bold text-gray-900">Teo/Cat</span>
+                    </a>
+                    
+                    <div class="hidden md:flex items-center justify-center flex-grow">
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 mx-4"><i class="fas fa-home mr-2"></i>Inicio</a>
+                        <a href="TodosLosProductos.html" class="text-gray-700 hover:text-blue-600 mx-4"><i class="fas fa-box-open mr-2"></i>Todos Los Productos</a>
+                        
+                        <div class="relative group mx-4">
+                            <button class="text-gray-700 hover:text-blue-600 flex items-center" id="categoryButton">
+                                <i class="fas fa-list mr-2"></i>Categoría
+                                <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50" id="categoryMenu">
+                                <div class="py-1">
+                                    <div class="menu-item relative px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        Perros
+                                        <div class="submenu w-48 bg-white rounded-md shadow-lg">
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Comida</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Juguetes</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Accesorios</a>
+                                        </div>
+                                    </div>
+                                    <div class="menu-item relative px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        Gatos
+                                        <div class="submenu w-48 bg-white rounded-md shadow-lg">
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Comida</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Juguetes</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Accesorios</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="SobreNosotros.html" class="text-gray-700 hover:text-blue-600 mx-4"><i class="fas fa-info-circle mr-2"></i>Sobre Nosotros</a>
+                        <a href="Contacto.html" class="text-blue-600 font-semibold mx-4"><i class="fas fa-envelope mr-2"></i>Contacto</a>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <a href="Carrito.html" class="text-gray-700 hover:text-blue-600 relative" aria-label="Carrito de compras">
+                            <i class="fas fa-shopping-cart text-2xl"></i>
+                            <span class="absolute -top-2 -right-2 bg-blue-600 text-white rounded-full h-5 w-5 flex items-center justify-center text-xs">0</span>
+                        </a>
+                        
+                        <div class="relative group">
+                            <button class="flex items-center focus:outline-none" aria-label="Menú de usuario" id="profileButton">
+                                <img src="../assets/images/profile/user-1.jpg" alt="" class="h-8 w-8 rounded-full object-cover">
+                            </button>
+                            <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50" id="profileMenu">
+                                <div class="py-1">
+                                    <a href="MiPerfil.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mi Perfil</a>
+                                    <a href="Login.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar Sesión</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menú móvil -->
+                <div class="md:hidden mt-4">
+                    <div class="flex flex-col space-y-2">
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600"><i class="fas fa-home mr-2"></i>Inicio</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600"><i class="fas fa-box-open mr-2"></i>Todos Los Productos</a>
+                        <button class="text-gray-700 hover:text-blue-600 flex items-center justify-between w-full" onclick="toggleMobileSubmenu('mobileCategoryMenu')">
+                            <span><i class="fas fa-list mr-2"></i>Categoría</span>
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="mobileCategoryMenu" class="hidden pl-4">
+                            <button class="text-gray-700 hover:text-blue-600 flex items-center justify-between w-full py-2" onclick="toggleMobileSubmenu('mobileDogsMenu')">
+                                <span>Perros</span>
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div id="mobileDogsMenu" class="hidden pl-4">
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Comida</a>
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Juguetes</a>
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Accesorios</a>
+                            </div>
+                            <button class="text-gray-700 hover:text-blue-600 flex items-center justify-between w-full py-2" onclick="toggleMobileSubmenu('mobileCatsMenu')">
+                                <span>Gatos</span>
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div id="mobileCatsMenu" class="hidden pl-4">
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Comida</a>
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Juguetes</a>
+                                <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Accesorios</a>
+                            </div>
+                        </div>
+                        <a href="SobreNosotros.html" class="text-gray-700 hover:text-blue-600"><i class="fas fa-info-circle mr-2"></i>Sobre Nosotros</a>
+                        <a href="Contacto.html" class="text-blue-600 font-semibold"><i class="fas fa-envelope mr-2"></i>Contacto</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="py-16">
+            <div class="container mx-auto px-4">
+                <h1 class="text-4xl font-bold text-center mb-12">Contacto</h1>
+                
+                <div class="flex flex-wrap -mx-4">
+                    <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0">
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h2 class="text-2xl font-semibold mb-6">Envíanos un mensaje</h2>
+                            <form>
+                                <div class="mb-4">
+                                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
+                                    <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Correo electrónico</label>
+                                    <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="subject" class="block text-gray-700 text-sm font-bold mb-2">Asunto</label>
+                                    <input type="text" id="subject" name="subject" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                                </div>
+                                <div class="mb-6">
+                                    <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Mensaje</label>
+                                    <textarea id="message" name="message" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required></textarea>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                        Enviar mensaje
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 px-4">
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h2 class="text-2xl font-semibold mb-6">Información de contacto</h2>
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <i class="fas fa-map-marker-alt text-blue-500 mt-1 mr-3"></i>
+                                    <span>Calle Mascota Feliz 123, Ciudad Perruna, CP 12345</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-phone text-blue-500 mr-3"></i>
+                                    <span>+34 123 456 789</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-envelope text-blue-500 mr-3"></i>
+                                    <span>info@teocat.com</span>
+                                </li>
+                            </ul>
+                            <h3 class="text-xl font-semibold mt-8 mb-4">Horario de atención</h3>
+                            <ul class="space-y-2">
+                                <li>Lunes a Viernes: 9:00 AM - 8:00 PM</li>
+                                <li>Sábados: 10:00 AM - 6:00 PM</li>
+                                <li>Domingos: Cerrado</li>
+                            </ul>
+                            <div class="mt-8">
+                                <h3 class="text-xl font-semibold mb-4">Síguenos en redes sociales</h3>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="text-blue-500 hover:text-blue-600">
+                                        <i class="fab fa-facebook-square text-2xl"></i>
+                                    </a>
+                                    <a href="#" class="text-pink-500 hover:text-pink-600">
+                                        <i class="fab fa-instagram-square text-2xl"></i>
+                                    </a>
+                                    <a href="#" class="text-blue-400 hover:text-blue-500">
+                                        <i class="fab fa-twitter-square text-2xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="bg-gray-800 text-white py-8">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-wrap justify-between">
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <h3 class="text-xl font-semibold mb-4">Teo/Cat</h3>
+                        <p>Tu tienda de confianza para productos de mascotas de alta calidad.</p>
+                    </div>
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <h3 class="text-xl font-semibold mb-4">Enlaces Rápidos</h3>
+                        <ul>
+                            <li><a href="./index.html" class="hover:text-blue-400">Inicio</a></li>
+                            <li><a href="#" class="hover:text-blue-400">Productos</a></li>
+                            <li><a href="./sobre-nosotros.html" class="hover:text-blue-400">Sobre Nosotros</a></li>
+                            <li><a href="./contacto.html" class="hover:text-blue-400">Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <h3 class="text-xl font-semibold mb-4">Contacto</h3>
+                        <p>Email: info@teocat.com</p>
+                        <p>Teléfono: (123) 456-7890</p>
+                    </div>
+                    <div class="w-full md:w-1/4">
+                        <h3 class="text-xl font-semibold mb-4">Síguenos</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                    <p>&copy; 2023 Teo/Cat. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function toggleMobileSubmenu(id) {
+            const submenu = document.getElementById(id);
+            submenu.classList.toggle('hidden');
+        }
+
+        // Función para alternar la visibilidad del menú de categorías
+        function toggleMenu(id) {
+            const menu = document.getElementById(id);
+            menu.classList.toggle('invisible');
+            menu.classList.toggle('opacity-0');
+        }
+
+        // Agregar evento de clic al botón de categorías
+        document.getElementById('categoryButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleMenu('categoryMenu');
+        });
+
+        // Agregar evento de clic al botón de perfil
+        document.getElementById('profileButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleMenu('profileMenu');
+        });
+
+        // Cerrar los menús cuando se hace clic fuera de ellos
+        document.addEventListener('click', function(e) {
+            const categoryButton = document.getElementById('categoryButton');
+            const categoryMenu = document.getElementById('categoryMenu');
+            const profileButton = document.getElementById('profileButton');
+            const profileMenu = document.getElementById('profileMenu');
+
+            if (!categoryButton.contains(e.target) && !categoryMenu.contains(e.target)) {
+                categoryMenu.classList.add('invisible', 'opacity-0');
+            }
+
+            if (!profileButton.contains(e.target) && !profileMenu.contains(e.target)) {
+                profileMenu.classList.add('invisible', 'opacity-0');
+            }
+        });
+    </script>
+</body>
+</html>
