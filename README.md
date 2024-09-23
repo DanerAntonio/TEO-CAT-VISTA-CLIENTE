@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Bootstrap w/ Vite
 
 Include [Bootstrap](https://getbootstrap.com)'s source Sass and individual JavaScript plugins with [Vite](https://vitejs.dev/).
@@ -14,3 +15,6 @@ cd examples/vite/
 npm install
 npm start
 ```
+=======
+# TEO-CAT-VISTA-CLIENTE
+>>>>>>> 6d78c8330be107302f27c795e3b8a4bd4956483d
